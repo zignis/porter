@@ -91,6 +91,7 @@ struct ProcessListView: View {
                                 forType: .string,
                             )
                         }
+
                         Button("Copy Port") {
                             let pasteboard = NSPasteboard.general
                             pasteboard.clearContents()
@@ -99,7 +100,9 @@ struct ProcessListView: View {
                                 forType: .string,
                             )
                         }
+
                         Divider()
+
                         Button("Kill process") {
                             monitor.killProcessById(process.id)
                         }
@@ -110,10 +113,15 @@ struct ProcessListView: View {
             monitor.processes.sort(using: sortOrder)
         }
         .tableStyle(.bordered)
-        .scrollContentBackground(.visible)
+        .alternatingRowBackgrounds(.disabled)
+        .scrollContentBackground(.hidden)
         .scrollBounceBehavior(.basedOnSize, axes: .horizontal)
         .frame(maxWidth: .infinity)
         .frame(height: 240)
+        .background(.thickMaterial)
+        .padding(-1)  // Remove border
+        .clipped()
+        .padding(.bottom, -1)
     }
 }
 

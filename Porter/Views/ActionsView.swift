@@ -83,6 +83,7 @@ struct ActionsView: View {
             .accessibilityLabel("More options")
         }
         .padding(10)
+        .background(.ultraThickMaterial)
     }
 }
 

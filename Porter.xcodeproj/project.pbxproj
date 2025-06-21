@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		22BC195F2E03D759000D1108 /* .swift-version in Resources */ = {isa = PBXBuildFile; fileRef = 22BC195E2E03D757000D1108 /* .swift-version */; };
 		22BC196D2E05D92D000D1108 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 22BC196C2E05D92D000D1108 /* LaunchAtLogin */; };
 		22D2DA642E03097500CFD127 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 22D2DA632E03097100CFD127 /* .gitignore */; };
 		22D2DA752E03424400CFD127 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D2DA732E03424100CFD127 /* Sparkle.framework */; };
@@ -56,6 +55,32 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		2290F7702E06C75300DE7432 /* Exceptions for "Releases" folder in "Porter" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				appcast.xml,
+				"Porter-1.0.0.dmg",
+				"Porter-1.0.1.dmg",
+				"Porter1.0.1.2-1.delta",
+			);
+			target = 22D0DE0A2DFEA99700BBD12F /* Porter */;
+		};
+		2290F7712E06C75E00DE7432 /* Exceptions for "Archive" folder in "Porter" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Porter-1.0.0/Porter.app",
+				"Porter-1.0.1/Porter.app",
+			);
+			target = 22D0DE0A2DFEA99700BBD12F /* Porter */;
+		};
+		2290F7722E06C76700DE7432 /* Exceptions for "Scripts" folder in "Porter" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				AppIcon.icns,
+				"build-dmg.sh",
+			);
+			target = 22D0DE0A2DFEA99700BBD12F /* Porter */;
+		};
 		22D0DE5A2E000E6300BBD12F /* Exceptions for "Porter" folder in "Porter" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -68,16 +93,25 @@
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		2290F7312E06A8F500DE7432 /* Archive */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				2290F7712E06C75E00DE7432 /* Exceptions for "Archive" folder in "Porter" target */,
+			);
 			path = Archive;
 			sourceTree = "<group>";
 		};
 		2290F7382E06AA5000DE7432 /* Scripts */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				2290F7722E06C76700DE7432 /* Exceptions for "Scripts" folder in "Porter" target */,
+			);
 			path = Scripts;
 			sourceTree = "<group>";
 		};
 		22BC196E2E067AA3000D1108 /* Releases */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				2290F7702E06C75300DE7432 /* Exceptions for "Releases" folder in "Porter" target */,
+			);
 			path = Releases;
 			sourceTree = "<group>";
 		};
@@ -291,7 +325,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22BC195F2E03D759000D1108 /* .swift-version in Resources */,
 				22D2DA642E03097500CFD127 /* .gitignore in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -478,7 +511,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1.0.1.2;
+				CURRENT_PROJECT_VERSION = 1.0.2.1;
 				DEVELOPMENT_TEAM = A9X6ZK33JM;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -498,7 +531,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.6;
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zignis.Porter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -517,7 +550,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1.0.1.2;
+				CURRENT_PROJECT_VERSION = 1.0.2.1;
 				DEVELOPMENT_TEAM = A9X6ZK33JM;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -537,7 +570,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.6;
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zignis.Porter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
