@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22BC195F2E03D759000D1108 /* .swift-version in Resources */ = {isa = PBXBuildFile; fileRef = 22BC195E2E03D757000D1108 /* .swift-version */; };
+		22BC196D2E05D92D000D1108 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 22BC196C2E05D92D000D1108 /* LaunchAtLogin */; };
 		22D2DA642E03097500CFD127 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 22D2DA632E03097100CFD127 /* .gitignore */; };
+		22D2DA752E03424400CFD127 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D2DA732E03424100CFD127 /* Sparkle.framework */; };
+		22D2DA762E03424400CFD127 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 22D2DA732E03424100CFD127 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,11 +31,28 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		22D2DA6F2E03406A00CFD127 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				22D2DA762E03424400CFD127 /* Sparkle.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		22BC195E2E03D757000D1108 /* .swift-version */ = {isa = PBXFileReference; lastKnownFileType = text; path = ".swift-version"; sourceTree = "<group>"; };
+		22BC19622E0435B4000D1108 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = AppIcon.icon; sourceTree = "<group>"; };
 		22D0DE0B2DFEA99700BBD12F /* Porter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Porter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22D0DE192DFEA99900BBD12F /* PorterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PorterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		22D0DE232DFEA99900BBD12F /* PorterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PorterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		22D2DA632E03097100CFD127 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		22D2DA732E03424100CFD127 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -45,6 +66,11 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		22BC196E2E067AA3000D1108 /* Releases */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Releases;
+			sourceTree = "<group>";
+		};
 		22D0DE0D2DFEA99700BBD12F /* Porter */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
@@ -70,6 +96,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22BC196D2E05D92D000D1108 /* LaunchAtLogin in Frameworks */,
+				22D2DA752E03424400CFD127 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,11 +121,15 @@
 		22D0DE022DFEA99700BBD12F = {
 			isa = PBXGroup;
 			children = (
+				22BC196E2E067AA3000D1108 /* Releases */,
+				22BC195E2E03D757000D1108 /* .swift-version */,
 				22D2DA632E03097100CFD127 /* .gitignore */,
 				22D0DE0D2DFEA99700BBD12F /* Porter */,
 				22D0DE1C2DFEA99900BBD12F /* PorterTests */,
 				22D0DE262DFEA99900BBD12F /* PorterUITests */,
+				22D2DA662E033F9C00CFD127 /* Frameworks */,
 				22D0DE0C2DFEA99700BBD12F /* Products */,
+				22BC19622E0435B4000D1108 /* AppIcon.icon */,
 			);
 			sourceTree = "<group>";
 		};
@@ -111,6 +143,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		22D2DA662E033F9C00CFD127 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				22D2DA732E03424100CFD127 /* Sparkle.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -121,16 +161,19 @@
 				22D0DE072DFEA99700BBD12F /* Sources */,
 				22D0DE082DFEA99700BBD12F /* Frameworks */,
 				22D0DE092DFEA99700BBD12F /* Resources */,
+				22D2DA6F2E03406A00CFD127 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				22BC196E2E067AA3000D1108 /* Releases */,
 				22D0DE0D2DFEA99700BBD12F /* Porter */,
 			);
 			name = Porter;
 			packageProductDependencies = (
+				22BC196C2E05D92D000D1108 /* LaunchAtLogin */,
 			);
 			productName = Porter;
 			productReference = 22D0DE0B2DFEA99700BBD12F /* Porter.app */;
@@ -214,6 +257,9 @@
 			);
 			mainGroup = 22D0DE022DFEA99700BBD12F;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				22BC196B2E05D92D000D1108 /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 22D0DE0C2DFEA99700BBD12F /* Products */;
 			projectDirPath = "";
@@ -231,6 +277,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22BC195F2E03D759000D1108 /* .swift-version in Resources */,
 				22D2DA642E03097500CFD127 /* .gitignore in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -412,21 +459,31 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = Porter/Porter.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = A9X6ZK33JM;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Porter/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Porter;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_LSUIElement = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "2025 zignis";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "© zignis";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zignis.Porter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -441,21 +498,31 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = Porter/Porter.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = A9X6ZK33JM;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Porter/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Porter;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_LSUIElement = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "2025 zignis";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "© zignis";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zignis.Porter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -569,6 +636,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		22BC196B2E05D92D000D1108 /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin-Modern";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		22BC196C2E05D92D000D1108 /* LaunchAtLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22BC196B2E05D92D000D1108 /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */;
+			productName = LaunchAtLogin;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 22D0DE032DFEA99700BBD12F /* Project object */;
 }

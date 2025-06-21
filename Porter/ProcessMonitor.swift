@@ -9,17 +9,17 @@ import AppKit
 import Foundation
 import SwiftUI
 
-enum NetworkProtocol: String {
+enum NetworkProtocol: String, CaseIterable {
     case tcp = "TCP"
     case udp = "UDP"
 }
 
-enum IPVersion: String {
+enum IPVersion: String, CaseIterable {
     case v4 = "IPv4"
     case v6 = "IPv6"
 }
 
-enum TCPState: String {
+enum TCPState: String, CaseIterable {
     case listen = "LISTEN"
     case established = "ESTABLISHED"
     case closed = "CLOSED"
@@ -52,7 +52,7 @@ struct ProcessData: Identifiable, Equatable, Hashable {
     }
 
     static func == (lhs: ProcessData, rhs: ProcessData) -> Bool {
-        return lhs.name == rhs.name && lhs.user == rhs.user
+        lhs.name == rhs.name && lhs.user == rhs.user
             && lhs.pid == rhs.pid && lhs.port == rhs.port
             && lhs.proto == rhs.proto && lhs.ipVersion == rhs.ipVersion
             && lhs.tcpState == rhs.tcpState
@@ -93,6 +93,73 @@ func getIconForProcess(pid: Int) -> Image? {
     return Image(nsImage: icon)
 }
 
+/// Parses the output of the `lsof` command into an array of `ProcessData`.
+///
+/// - Parameter output: The raw string output from `lsof`.
+/// - Returns: An array of `ProcessData` representing active processes.
+func parseLsofOutput(_ output: String) -> [ProcessData] {
+    var processes: [ProcessData] = []
+    let lines = output.split(separator: "\n").dropFirst()
+
+    for line in lines {
+        let columns = line.split(
+            separator: " ",
+            omittingEmptySubsequences: true,
+        )
+
+        guard columns.count >= 9 else { continue }
+
+        let process = String(columns[0])
+        let pid = Int(columns[1]) ?? -1
+        let user = String(columns[2])
+        let fileDescriptor = String(columns[3])
+        let rawIpVersion = String(columns[4])
+        let rawProto = String(columns[7])
+        let addr = String(columns[8])
+        let rawTcpState = columns.count >= 10 ? String(columns[9]) : nil
+
+        guard let ipVersion = IPVersion(rawValue: rawIpVersion) else {
+            continue
+        }
+
+        guard let proto = NetworkProtocol(rawValue: rawProto.uppercased())
+        else { continue }
+
+        if let localAddr = addr.split(separator: "->").first, // For Local->Remote IPv6 entries
+           let portString = localAddr.split(separator: ":").last,
+           let port = Int(portString.split(separator: " ").first ?? "") // Safeguard against leading or trailing whitespace
+        {
+            let tcpState: TCPState? =
+                if let stateString = rawTcpState,
+                let state = TCPState(
+                    rawValue:
+                    // Replace `(` and `)` around TCP state value from `lsof`
+                    stateString
+                        .replacingOccurrences(of: "(", with: "")
+                        .replacingOccurrences(of: ")", with: ""),
+                ) {
+                    state
+                } else { nil }
+
+            processes.append(
+                ProcessData(
+                    name: process,
+                    user: user,
+                    pid: pid,
+                    port: port,
+                    proto: proto,
+                    ipVersion: ipVersion,
+                    tcpState: tcpState,
+                    fileDescriptor: fileDescriptor,
+                    icon: getIconForProcess(pid: pid),
+                ),
+            )
+        }
+    }
+
+    return processes
+}
+
 /// Monitors and manages running processes.
 class ProcessMonitor: ObservableObject {
     @Published var processes: [ProcessData] = []
@@ -117,7 +184,7 @@ class ProcessMonitor: ObservableObject {
     private let timerInterval: TimeInterval = 1.0
     private let queue = DispatchQueue(
         label: "ProcessMonitorQueue",
-        qos: .background
+        qos: .background,
     )
 
     private static let lsofExecutablePath = "/usr/sbin/lsof"
@@ -148,7 +215,7 @@ class ProcessMonitor: ObservableObject {
 
         timer = Timer.scheduledTimer(
             withTimeInterval: timerInterval,
-            repeats: true
+            repeats: true,
         ) {
             [weak self] _ in
             self?.pollProcesses()
@@ -166,7 +233,7 @@ class ProcessMonitor: ObservableObject {
     public func checkLsofInstallation() {
         guard
             !FileManager.default.isExecutableFile(
-                atPath: Self.lsofExecutablePath
+                atPath: Self.lsofExecutablePath,
             )
         else { return }
 
@@ -193,7 +260,7 @@ class ProcessMonitor: ObservableObject {
                 quitAlert.runModal()
             } catch {
                 print(
-                    "failed to install Xcode Command Line Tools: \(error)"
+                    "failed to install Xcode Command Line Tools: \(error)",
                 )
 
                 let errorAlert = NSAlert()
@@ -253,7 +320,7 @@ class ProcessMonitor: ObservableObject {
         }
 
         let pidsToKill = processes.filter { selectedProcesses.contains($0.id) }
-            .map { $0.pid }
+            .map(\.pid)
 
         lastProcesses.removeAll { selectedProcesses.contains($0.id) }
         processes.removeAll { selectedProcesses.contains($0.id) }
@@ -267,17 +334,17 @@ class ProcessMonitor: ObservableObject {
     ///
     /// Parses the output and updates the process list if changes are detected.
     private func pollProcesses() {
-        self.queue.async { [weak self] in
-            guard let self = self else { return }
-            guard !self.isBusyKilling else { return }
+        queue.async { [weak self] in
+            guard let self else { return }
+            guard !isBusyKilling else { return }
 
-            let output = self.runLsof()
-            var parsed = self.parseLsofOutput(output)
-            let diff = diffProcesses(self.lastProcesses, parsed)
+            let output = runLsof()
+            var parsed = parseLsofOutput(output)
+            let diff = diffProcesses(lastProcesses, parsed)
 
-            parsed.sort(using: self.sortOrder)
+            parsed.sort(using: sortOrder)
 
-            self.lastProcesses = parsed
+            lastProcesses = parsed
 
             if !diff.added.isEmpty || !diff.removed.isEmpty {
                 DispatchQueue.main.async {
@@ -308,74 +375,6 @@ class ProcessMonitor: ObservableObject {
         task.waitUntilExit()
         let data = pipe.fileHandleForReading.readDataToEndOfFile()
         return String(data: data, encoding: .utf8) ?? ""
-    }
-
-    /// Parses the output of the `lsof` command into an array of `ProcessData`.
-    ///
-    /// - Parameter output: The raw string output from `lsof`.
-    /// - Returns: An array of `ProcessData` representing active processes.
-    private func parseLsofOutput(_ output: String) -> [ProcessData] {
-        var processes: [ProcessData] = []
-        let lines = output.split(separator: "\n").dropFirst()
-
-        for line in lines {
-            let columns = line.split(
-                separator: " ",
-                omittingEmptySubsequences: true
-            )
-
-            guard columns.count >= 9 else { continue }
-
-            let process = String(columns[0])
-            let pid = Int(columns[1]) ?? -1
-            let user = String(columns[2])
-            let fileDescriptor = String(columns[3])
-            let rawIpVersion = String(columns[4])
-            let rawProto = String(columns[7])
-            let addr = String(columns[8])
-            let rawTcpState = columns.count >= 10 ? String(columns[9]) : nil
-
-            guard let ipVersion = IPVersion(rawValue: rawIpVersion) else {
-                continue
-            }
-
-            guard let proto = NetworkProtocol(rawValue: rawProto.uppercased())
-            else { continue }
-
-            if let portString = addr.split(separator: ":").last,
-                let port = Int(portString.split(separator: " ").first ?? "")
-            {
-                let tcpState: TCPState? =
-                    if let stateString = rawTcpState,
-                        let state = TCPState(
-                            rawValue:
-                                // Replace `(` and `)` around TCP state value from `lsof`
-                                stateString
-                                .replacingOccurrences(of: "(", with: "")
-                                .replacingOccurrences(of: ")", with: "")
-                        )
-                    {
-                        state
-                    } else { nil }
-
-                processes.append(
-                    ProcessData(
-                        name: process,
-                        user: user,
-                        pid: pid,
-                        port: port,
-                        proto: proto,
-                        ipVersion: ipVersion,
-                        tcpState: tcpState,
-                        fileDescriptor: fileDescriptor,
-                        icon: getIconForProcess(pid: pid)
-                    )
-                )
-
-            }
-        }
-
-        return processes
     }
 
     /// Sends the kill signal to the given PIDs.
@@ -430,7 +429,7 @@ class ProcessMonitor: ObservableObject {
 
             if task.terminationStatus != 0 {
                 print(
-                    "`sudo kill` failed with exit code \(task.terminationStatus)"
+                    "`sudo kill` failed with exit code \(task.terminationStatus)",
                 )
                 showKillFailedAlert(pids)
             }

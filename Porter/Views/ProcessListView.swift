@@ -18,7 +18,7 @@ struct ProcessListView: View {
         Table(
             of: ProcessData.self,
             selection: $monitor.selectedProcesses,
-            sortOrder: $monitor.sortOrder
+            sortOrder: $monitor.sortOrder,
         ) {
             TableColumn("Process Name", value: \.name) { item in
                 HStack {
@@ -27,13 +27,13 @@ struct ProcessListView: View {
                             .resizable()
                             .frame(width: 18, height: 18)
                             .clipShape(
-                                RoundedRectangle(cornerRadius: 8)
+                                RoundedRectangle(cornerRadius: 8),
                             )
                     }
 
                     Text(item.name).padding(
                         .leading,
-                        item.icon == nil ? 26 : 0
+                        item.icon == nil ? 26 : 0,
                     )
                     .textSelection(.enabled)
                 }
@@ -61,7 +61,7 @@ struct ProcessListView: View {
                             .fontDesign(.monospaced)
                             .fontWeight(.medium)
                             .foregroundStyle(
-                                tcpState == .established ? .black : .white
+                                tcpState == .established ? .black : .white,
                             )
                             .padding(.vertical, 0.75)
                             .padding(.horizontal, 4.25)
@@ -88,7 +88,7 @@ struct ProcessListView: View {
                             pasteboard.clearContents()
                             pasteboard.setString(
                                 String(process.pid),
-                                forType: .string
+                                forType: .string,
                             )
                         }
                         Button("Copy Port") {
@@ -96,7 +96,7 @@ struct ProcessListView: View {
                             pasteboard.clearContents()
                             pasteboard.setString(
                                 String(process.port),
-                                forType: .string
+                                forType: .string,
                             )
                         }
                         Divider()

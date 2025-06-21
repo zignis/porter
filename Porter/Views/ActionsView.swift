@@ -6,13 +6,24 @@
 //
 
 import AppKit
+import LaunchAtLogin
+import Sparkle
 import SwiftUI
 
 struct ActionsView: View {
     @ObservedObject var monitor: ProcessMonitor
 
-    init(_ monitor: ProcessMonitor) {
+    private let updater: SPUUpdater?
+    private let build =
+        Bundle.main.infoDictionary?["CFBundleVersion"] as? String
+    private let version =
+        Bundle.main.infoDictionary?[
+            "CFBundleShortVersionString",
+        ] as? String
+
+    init(_ monitor: ProcessMonitor, updater: SPUUpdater? = nil) {
         self.monitor = monitor
+        self.updater = updater
     }
 
     var body: some View {
@@ -26,33 +37,50 @@ struct ActionsView: View {
 
             Button(
                 monitor.selectedProcesses.count > 1
-                    ? "Kill processes" : "Kill process"
+                    ? "Kill processes" : "Kill process",
+                role: .destructive,
             ) {
                 monitor.killSelectedProcesses()
             }
             .disabled(monitor.selectedProcesses.isEmpty)
 
             Menu {
-                // TODO: Remove hardcoded version and add About & Update window
-                Text("Version: 1.0").font(.callout)
-                Button("About Porter", action: { print("about") })
+                if let version {
+                    Text("Version \(version)").font(.callout)
+                }
+
                 Button(
-                    "Check for Updates",
-                    action: { print("check updates") }
+                    "About Porter",
+                    action: {
+                        NSApp.keyWindow?.close()
+                        NSApplication.shared.orderFrontStandardAboutPanel(
+                            [
+                                .version: version ?? "Unknown",
+                                .applicationVersion: build ?? "Unknown",
+                            ] as [NSApplication.AboutPanelOptionKey: Any],
+                        )
+                    },
                 )
+
+                if let updater {
+                    UpdaterView(updater)
+                }
+
+                LaunchAtLogin.Toggle()
+
                 Divider()
+
                 Button(
                     "Quit",
                     action: {
                         NSApp.terminate(nil)
-                    }
+                    },
                 )
             } label: {
                 Image(systemName: "ellipsis")
             }
             .fixedSize()
             .accessibilityLabel("More options")
-
         }
         .padding(10)
     }
