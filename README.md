@@ -1,4 +1,7 @@
-# Porter: Menu bar port manager for macOS
+<h1>
+  <img width="25" alt="Porter icon" src="https://github.com/user-attachments/assets/f47d12d6-9a41-4f8e-b2bc-bd5b3c5aad2a" />
+  Porter: Menu bar port manager for macOS
+</h1>
 
 <p align="center">
   <img width="566" alt="Porter screenshot" src="https://github.com/user-attachments/assets/c698c1a0-7840-4032-8f97-45b0f25c2755" />
