@@ -66,6 +66,16 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		2290F7312E06A8F500DE7432 /* Archive */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Archive;
+			sourceTree = "<group>";
+		};
+		2290F7382E06AA5000DE7432 /* Scripts */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Scripts;
+			sourceTree = "<group>";
+		};
 		22BC196E2E067AA3000D1108 /* Releases */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Releases;
@@ -121,6 +131,8 @@
 		22D0DE022DFEA99700BBD12F = {
 			isa = PBXGroup;
 			children = (
+				2290F7382E06AA5000DE7432 /* Scripts */,
+				2290F7312E06A8F500DE7432 /* Archive */,
 				22BC196E2E067AA3000D1108 /* Releases */,
 				22BC195E2E03D757000D1108 /* .swift-version */,
 				22D2DA632E03097100CFD127 /* .gitignore */,
@@ -168,6 +180,8 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				2290F7312E06A8F500DE7432 /* Archive */,
+				2290F7382E06AA5000DE7432 /* Scripts */,
 				22BC196E2E067AA3000D1108 /* Releases */,
 				22D0DE0D2DFEA99700BBD12F /* Porter */,
 			);
