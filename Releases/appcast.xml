@@ -3,6 +3,17 @@
     <channel>
         <title>Porter</title>
         <item>
+            <title>1.0.1</title>
+            <pubDate>Sat, 21 Jun 2025 14:05:40 +0530</pubDate>
+            <sparkle:version>1.0.1.2</sparkle:version>
+            <sparkle:shortVersionString>1.0.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.6</sparkle:minimumSystemVersion>
+            <enclosure url="https://raw.githubusercontent.com/zignis/porter/refs/heads/main/Releases/Porter-1.0.1.dmg" length="4554781" type="application/octet-stream" sparkle:edSignature="OESbRNWTmdTH0kXpT6cxQH14DmuMIwBkQ2KkWo67ceOuPxv4eVMll57Mjn7JK9zvUpHNSF8dtDw5/l5W91G1Aw=="/>
+            <sparkle:deltas>
+                <enclosure url="https://raw.githubusercontent.com/zignis/porter/refs/heads/main/Releases/Porter1.0.1.2-1.delta" sparkle:deltaFrom="1" length="3378786" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="864832" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,en" sparkle:edSignature="lyr7Hrpdc/b/G8MVu2ZxlVTvgiZYQJRSr2slOYsXy0dNv5PhO2i02JsHEeVVRJYIPBhnwEaL4XiJjxRtcv8hAw=="/>
+            </sparkle:deltas>
+        </item>
+        <item>
             <title>1.0</title>
             <pubDate>Sat, 21 Jun 2025 00:12:16 +0530</pubDate>
             <sparkle:version>1</sparkle:version>
