@@ -15,9 +15,8 @@
 
 ---
 
-
 <p align="center">
-  <img width="566" alt="Porter screenshot" src="https://github.com/user-attachments/assets/c698c1a0-7840-4032-8f97-45b0f25c2755" />
+  <img width="566" alt="Porter screenshot" src="https://github.com/user-attachments/assets/ba70025b-b3ca-457b-bdf1-3c7f5dec6509" />
 </p>
 
 ---
