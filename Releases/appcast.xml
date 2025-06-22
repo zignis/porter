@@ -3,6 +3,20 @@
     <channel>
         <title>Porter</title>
         <item>
+            <title>1.0.4</title>
+            <pubDate>Sun, 22 Jun 2025 11:53:08 +0530</pubDate>
+            <sparkle:version>1.0.4.1</sparkle:version>
+            <sparkle:shortVersionString>1.0.4</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.6</sparkle:minimumSystemVersion>
+            <enclosure url="https://raw.githubusercontent.com/zignis/porter/refs/heads/main/Releases/Porter-1.0.4.dmg" length="1716255" type="application/octet-stream" sparkle:edSignature="NettRS0vmU10PhvcGHxDaTYclA2BL15kglThKkGQZMxOjqEey9fOY7JYNRA/3ZPp9MbQ+SVrluht4JAzzZB7Bw=="/>
+            <sparkle:deltas>
+                <enclosure url="https://raw.githubusercontent.com/zignis/porter/refs/heads/main/Releases/Porter1.0.4.1-1.0.3.1.delta" sparkle:deltaFrom="1.0.3.1" length="38330" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="864640" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,en" sparkle:edSignature="6yLglygrXr87mf1TEtLocE6/3DQ3TOpbX3jIOCfqXFwULR0gB1S/9u1EaBo7ZLjO5wL9DvVFMuxCcwjtuhlsAQ=="/>
+                <enclosure url="https://raw.githubusercontent.com/zignis/porter/refs/heads/main/Releases/Porter1.0.4.1-1.0.2.1.delta" sparkle:deltaFrom="1.0.2.1" length="35918" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="864832" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,en" sparkle:edSignature="aeDRvmeIKv2Dh0IEDHo6kwdiCLlwfBOZQD84JUTE0ZzKgtlclcv5LvwEXCcE9Oc/6HjqdV7MpE3wxmzDRwIqAw=="/>
+                <enclosure url="https://raw.githubusercontent.com/zignis/porter/refs/heads/main/Releases/Porter1.0.4.1-1.0.1.2.delta" sparkle:deltaFrom="1.0.1.2" length="46806" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="864832" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,en" sparkle:edSignature="X5WvH4Dy2mMnvORhwY1A5uycVQNfvxcpeGPwjEraC1IQsyMDMrRonHCnDUOYle/12CrE22ig2k82oPx5MjngDA=="/>
+                <enclosure url="https://raw.githubusercontent.com/zignis/porter/refs/heads/main/Releases/Porter1.0.4.1-1.delta" sparkle:deltaFrom="1" length="668838" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="864832" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,en" sparkle:edSignature="6JebHpC8Ms9w6wtn82mR1XCvzjwhtEuyMPFHChlZUaYlhuB/m62gohbMuGwvb3Rf3WnRreVK4itcRtRRI0s3BQ=="/>
+            </sparkle:deltas>
+        </item>
+        <item>
             <title>1.0.3</title>
             <pubDate>Sun, 22 Jun 2025 11:44:01 +0530</pubDate>
             <sparkle:version>1.0.3.1</sparkle:version>
@@ -25,17 +39,6 @@
             <sparkle:deltas>
                 <enclosure url="https://raw.githubusercontent.com/zignis/porter/refs/heads/main/Releases/Porter1.0.2.1-1.0.1.2.delta" sparkle:deltaFrom="1.0.1.2" length="44018" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="864832" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,en" sparkle:edSignature="EaeBb4k0vnSS1gqQm/g1lxE9CECoigjQqXjOXnYGWzSf69liY27+3np7ZauM4yhSpxVd1AVTuTjbu59+aPJ4AA=="/>
                 <enclosure url="https://raw.githubusercontent.com/zignis/porter/refs/heads/main/Releases/Porter1.0.2.1-1.delta" sparkle:deltaFrom="1" length="667510" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="864832" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,en" sparkle:edSignature="h5pteTHxq6FXC1T1/lTMkPAGDQCVD5hF118IKIwLEYyJNqwt72TW6udpRIkajcdHYvgdJcIlHVyZJH9yZtINBQ=="/>
-            </sparkle:deltas>
-        </item>
-        <item>
-            <title>1.0.1</title>
-            <pubDate>Sat, 21 Jun 2025 14:05:40 +0530</pubDate>
-            <sparkle:version>1.0.1.2</sparkle:version>
-            <sparkle:shortVersionString>1.0.1</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.6</sparkle:minimumSystemVersion>
-            <enclosure url="https://raw.githubusercontent.com/zignis/porter/refs/heads/main/Releases/Porter-1.0.1.dmg" length="4554781" type="application/octet-stream" sparkle:edSignature="OESbRNWTmdTH0kXpT6cxQH14DmuMIwBkQ2KkWo67ceOuPxv4eVMll57Mjn7JK9zvUpHNSF8dtDw5/l5W91G1Aw=="/>
-            <sparkle:deltas>
-                <enclosure url="https://raw.githubusercontent.com/zignis/porter/refs/heads/main/Releases/Porter1.0.1.2-1.delta" sparkle:deltaFrom="1" length="3378786" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="864832" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,en" sparkle:edSignature="lyr7Hrpdc/b/G8MVu2ZxlVTvgiZYQJRSr2slOYsXy0dNv5PhO2i02JsHEeVVRJYIPBhnwEaL4XiJjxRtcv8hAw=="/>
             </sparkle:deltas>
         </item>
     </channel>
