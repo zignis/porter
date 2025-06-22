@@ -38,7 +38,7 @@ struct ProcessListView: View {
                     .textSelection(.enabled)
                 }
                 .padding(.leading, 5)
-            }
+            }.width(min: 90)
 
             TableColumn("Port", value: \.port) { item in
                 Text(String(item.port))
@@ -71,7 +71,7 @@ struct ProcessListView: View {
                 } else {
                     Text(item.proto.rawValue)
                 }
-            }
+            }.width(min: 60)
 
             TableColumn("PID", value: \.pid) { item in
                 Text(String(item.pid))

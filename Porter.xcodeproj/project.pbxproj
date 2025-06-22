@@ -58,14 +58,15 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				appcast.xml,
+				"old_updates/Porter1.0.1.2-1.delta",
+				"old_updates/Porter1.0.2.1-1.0.1.2.delta",
+				"old_updates/Porter1.0.2.1-1.delta",
 				"Porter-1.0.0.dmg",
 				"Porter-1.0.1.dmg",
 				"Porter-1.0.2.dmg",
 				"Porter-1.0.3.dmg",
 				"Porter-1.0.4.dmg",
-				"Porter1.0.1.2-1.delta",
-				"Porter1.0.2.1-1.0.1.2.delta",
-				"Porter1.0.2.1-1.delta",
+				"Porter-1.0.5.dmg",
 				"Porter1.0.3.1-1.0.1.2.delta",
 				"Porter1.0.3.1-1.0.2.1.delta",
 				"Porter1.0.3.1-1.delta",
@@ -73,6 +74,11 @@
 				"Porter1.0.4.1-1.0.2.1.delta",
 				"Porter1.0.4.1-1.0.3.1.delta",
 				"Porter1.0.4.1-1.delta",
+				"Porter1.0.5.1-1.0.1.2.delta",
+				"Porter1.0.5.1-1.0.2.1.delta",
+				"Porter1.0.5.1-1.0.3.1.delta",
+				"Porter1.0.5.1-1.0.4.1.delta",
+				"Porter1.0.5.1-1.delta",
 			);
 			target = 22D0DE0A2DFEA99700BBD12F /* Porter */;
 		};
@@ -84,6 +90,7 @@
 				"Porter-1.0.2/Porter.app",
 				"Porter-1.0.3/Porter.app",
 				"Porter-1.0.4/Porter.app",
+				"Porter-1.0.5/Porter.app",
 			);
 			target = 22D0DE0A2DFEA99700BBD12F /* Porter */;
 		};
@@ -524,7 +531,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1.0.4.1;
+				CURRENT_PROJECT_VERSION = 1.0.5.1;
 				DEVELOPMENT_TEAM = A9X6ZK33JM;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -544,7 +551,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.6;
-				MARKETING_VERSION = 1.0.4;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zignis.Porter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -563,7 +570,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1.0.4.1;
+				CURRENT_PROJECT_VERSION = 1.0.5.1;
 				DEVELOPMENT_TEAM = A9X6ZK33JM;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -583,7 +590,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.6;
-				MARKETING_VERSION = 1.0.4;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zignis.Porter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
