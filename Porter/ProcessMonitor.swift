@@ -143,7 +143,7 @@ func parseLsofOutput(_ output: String) -> [ProcessData] {
 
             processes.append(
                 ProcessData(
-                    name: process,
+                    name: process.replacingOccurrences(of: "\\x20", with: " "),
                     user: user,
                     pid: pid,
                     port: port,
@@ -363,7 +363,7 @@ class ProcessMonitor: ObservableObject {
 
         task.standardOutput = pipe
         task.executableURL = URL(fileURLWithPath: Self.lsofExecutablePath)
-        task.arguments = ["-i", "-n", "-P"]
+        task.arguments = ["-i", "-n", "-P", "+c0"]
 
         do {
             try task.run()

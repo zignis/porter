@@ -16,12 +16,12 @@ struct LsofParseTests {
             // Single whitespaces
             """
             COMMAND PID USER FD TYPE DEVICE SIZE/OFF NODE NAME
-            Porter 99 zignis 10u IPv4 0x0 0t0 TCP 127.0.0.1:8080 (LISTEN)
+            Porter\\x20Dev 99 zignis 10u IPv4 0x0 0t0 TCP 127.0.0.1:8080 (LISTEN)
             """,
             // Multiple whitespaces
             """
-            COMMAND    PID    USER    FD    TYPE    DEVICE    SIZE/OFF    NODE NAME
-            Porter      99  zignis    10u   IPv4       0x0         0t0     TCP 127.0.0.1:8080 (LISTEN)
+            COMMAND            PID    USER    FD    TYPE    DEVICE    SIZE/OFF    NODE NAME
+            Porter\\x20Dev      99  zignis    10u   IPv4       0x0         0t0     TCP 127.0.0.1:8080 (LISTEN)
             """,
         ],
     )
@@ -34,7 +34,7 @@ struct LsofParseTests {
 
         let process = result.first!
 
-        #expect(process.name == "Porter")
+        #expect(process.name == "Porter Dev")
         #expect(process.pid == 99)
         #expect(process.user == "zignis")
         #expect(process.port == 8080)

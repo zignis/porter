@@ -119,7 +119,7 @@ struct ProcessListView: View {
         .frame(maxWidth: .infinity)
         .frame(height: 240)
         .background(.thickMaterial)
-        .padding(-1)  // Remove border
+        .padding(-1) // Remove border
         .clipped()
         .padding(.bottom, -1)
     }
