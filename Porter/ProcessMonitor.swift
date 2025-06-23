@@ -291,22 +291,18 @@ class ProcessMonitor: ObservableObject {
         }
 
         isBusyKilling = true
+        defer { isBusyKilling = false }
 
-        defer {
-            isBusyKilling = false
-        }
+        let pidToKill = process.pid
 
-        if let index = lastProcesses.firstIndex(where: { $0.id == id }) {
-            lastProcesses.remove(at: index)
-        }
+        runKill([pidToKill])
 
-        if let index = processes.firstIndex(where: { $0.id == id }) {
-            processes.remove(at: index)
-        }
+        let idsToRemoveFromSelection = processes.filter { $0.pid == pidToKill }
+            .map(\.id)
+        selectedProcesses.subtract(idsToRemoveFromSelection)
 
-        selectedProcesses.remove(process.id)
-
-        runKill([process.pid])
+        lastProcesses.removeAll { $0.pid == pidToKill }
+        processes.removeAll { $0.pid == pidToKill }
     }
 
     /// Kills all processes currently selected.
@@ -314,18 +310,16 @@ class ProcessMonitor: ObservableObject {
         guard !selectedProcesses.isEmpty else { return }
 
         isBusyKilling = true
-
-        defer {
-            isBusyKilling = false
-        }
+        defer { isBusyKilling = false }
 
         let pidsToKill = processes.filter { selectedProcesses.contains($0.id) }
             .map(\.pid)
 
-        lastProcesses.removeAll { selectedProcesses.contains($0.id) }
-        processes.removeAll { selectedProcesses.contains($0.id) }
-        selectedProcesses.removeAll()
         runKill(pidsToKill)
+
+        lastProcesses.removeAll { pidsToKill.contains($0.pid) }
+        processes.removeAll { pidsToKill.contains($0.pid) }
+        selectedProcesses.removeAll()
     }
 
     /* Private methods */
@@ -380,7 +374,7 @@ class ProcessMonitor: ObservableObject {
     /// Sends the kill signal to the given PIDs.
     ///
     /// - Parameter pids: Array of PIDs to kill.
-    private func runKill(_ pids: [Int]) {
+    fileprivate func runKill(_ pids: [Int]) {
         let serializedPids = pids.map { "\($0)" }
         let task = Process()
 
@@ -453,3 +447,16 @@ class ProcessMonitor: ObservableObject {
         alert.runModal()
     }
 }
+
+#if TESTING
+
+    /// A test subclass that overrides `runKill` to avoid killing real processes.
+    final class TestableProcessMonitor: ProcessMonitor {
+        var killedPids: [Int] = []
+
+        override func runKill(_ pids: [Int]) {
+            killedPids.append(contentsOf: pids)
+        }
+    }
+
+#endif
