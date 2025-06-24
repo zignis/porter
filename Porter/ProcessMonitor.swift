@@ -342,6 +342,7 @@ class ProcessMonitor: ObservableObject {
 
             if !diff.added.isEmpty || !diff.removed.isEmpty {
                 DispatchQueue.main.async {
+                    self.selectedProcesses.subtract(diff.removed.map(\.id))
                     self.processes = parsed
                 }
             }
