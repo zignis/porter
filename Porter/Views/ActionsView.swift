@@ -10,6 +10,10 @@ import LaunchAtLogin
 import Sparkle
 import SwiftUI
 
+let githubUrl = URL(
+    string: "https://github.com/zignis/porter",
+)!
+
 struct ActionsView: View {
     @ObservedObject var monitor: ProcessMonitor
 
@@ -60,6 +64,11 @@ struct ActionsView: View {
                             ] as [NSApplication.AboutPanelOptionKey: Any],
                         )
                     },
+                )
+
+                Link(
+                    "View on GitHub",
+                    destination: githubUrl,
                 )
 
                 if let updater {
